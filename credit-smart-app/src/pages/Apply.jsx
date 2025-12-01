@@ -1,10 +1,23 @@
 import React,{useEffect,useMemo,useState}from"react";
 import creditsData from"../data/creditsData";
+import { useLocation } from "react-router-dom";
+
+
 
 function formatCurrency(n){if(!n)return"0";return Number(n).toLocaleString("es-CO");}
 
 export default function Apply(){
 const[form,setForm]=useState({name:"",docType:"",docNumber:"",phone:"",email:"",creditId:"",amount:"",term:""});
+const location = useLocation();
+useEffect(() => {
+  if (location.state?.creditId) {
+    setForm(prev => ({
+      ...prev,
+      creditId: String(location.state.creditId)
+    }));
+  }
+}, [location.state]);
+
 const[errors,setErrors]=useState({});
 const[requests,setRequests]=useState([]);
 const[successMsg,setSuccessMsg]=useState("");
@@ -134,13 +147,22 @@ return(
 </form>
 
 {successMsg&&<p style={{color:"green",marginTop:12}}>{successMsg}</p>}
+{requests.length > 0 && (
+  <div style={{
+    marginTop: 15,
+    padding: "10px 14px",
+    background: "#e8f5e9",
+    border: "1px solid #2e7d32",
+    borderRadius: 6,
+    color: "#2e7d32",
+    fontWeight: "bold"
+  }}>
+    Se han realizado {requests.length} solicitudes.
+  </div>
+)}
 
-{requests.length>0&&<>
-<h4 style={{marginTop:18}}>Solicitudes en memoria</h4>
-<ul>
-{requests.map(r=><li key={r.id}>{r.name} - {creditsData.find(c=>String(c.id)===String(r.creditId))?.name||"—"} - Monto: ${formatCurrency(r.amount)} - Cuota: ${formatCurrency(r.monthly)}</li>)}
-</ul>
-</>}
+
+
 </div>
 </section>
 </div>

@@ -3,11 +3,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-export default function CreditCard({ credit, onRequest }) {
+export default function CreditCard({ credit }) {
   const navigate = useNavigate();
 
   const goToApply = () => {
-    navigate("/apply"); 
+    navigate("/apply",{state: {creditId: credit.id}}); 
   };
   
   
