@@ -1,0 +1,1 @@
+Proyecto iniciado con estructura base de React y Vite
