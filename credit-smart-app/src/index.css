@@ -10,16 +10,40 @@ body { font-family: "Inter", "Segoe UI", sans-serif; background-color:#f5f7fa; c
 .menu { display:flex; list-style:none; gap:2rem; }
 .menu a { color:#3b4a78; text-decoration:none; font-weight:600; transition:0.3s; font-size:1.05rem; }
 .menu a:hover, .menu a.active { color:#002fff; transform:scale(1.03); }
+@media (max-width: 768px) {
+  .menu {
+    gap: 1rem;
+  }
+  .menu a {
+    font-size: 0.9rem;
+  }
+}
+
 
 /* hero */
-.hero { background: linear-gradient(145deg,#ffffff 0%,#e4e9ff 100%); text-align:center; padding:2rem 1rem; border-radius:13px; box-shadow:0 6px 20px rgba(0,0,0,.1); margin-bottom:2rem; }
+.hero { background: linear-gradient(145deg,#ffffff 0%,#e4e9ff 100%); text-align:center; padding:2rem 1rem; border-radius:13px; box-shadow:0 8px 40px rgba(0,0,0,0.08); margin-bottom:2rem; }
 .hero h2 { font-size:2rem; margin-bottom:1rem; font-weight:800; letter-spacing:2px; color:#2a3d8f; }
 .hero p { font-size:1.1rem; color:#55627d; max-width:700px; margin:0 auto; }
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
 
 /* credits grid */
 .credits-section { padding:0.5rem 1rem; text-align:center; }
 .credits-section h3 { font-size:2.5rem; font-weight:700; color:#2a3d8f; margin-bottom:2rem; }
-.credits-grid { display:grid; grid-template-columns: repeat(3, minmax(250px, 1fr)); gap:2rem; padding:1rem 0; justify-items: center; }
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+  justify-items: center;
+}
 .solicitud-card h3{
   font-size:2rem;
 }
