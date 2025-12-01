@@ -1,7 +1,17 @@
 // src/components/CreditCard.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function CreditCard({ credit, onRequest }) {
+  const navigate = useNavigate();
+
+  const goToApply = () => {
+    navigate("/apply"); 
+  };
+  
+  
+  
   return (
     <div className="credits-card">
 
@@ -46,10 +56,11 @@ export default function CreditCard({ credit, onRequest }) {
       </div>
 
       <div style={{ marginTop: 12 }}>
-        <button className="btn-primary" onClick={() => onRequest && onRequest(credit)}>
+        <button className="btn-primary" onClick={goToApply}>
           Solicitar ahora
         </button>
       </div>
     </div>
+    
   );
 }
