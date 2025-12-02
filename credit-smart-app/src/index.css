@@ -79,8 +79,49 @@ body { font-family: "Inter", "Segoe UI", sans-serif; background-color:#f5f7fa; c
 .form-actions{ margin-top:1rem; }
 
 /* footer */
-.footer { background: linear-gradient(145deg,#ffffff 0%,#e8edff 100%); padding:2.5rem 1rem; margin-top:3rem; border-radius:18px 18px 0 0; text-align:center; box-shadow:0 -4px 12px rgba(0,0,0,.08); }
-.footer-title{ font-size:1.4rem; font-weight:700; color:#2a3d8f; margin-bottom:1.5rem; }
+.footer {
+  width: 100%;
+  background: linear-gradient(145deg, #ffffff 0%, #d9e4ff 100%);
+  padding: 25px 0;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+
+.footer-text {
+  color: #3b4a78;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.footer-copy {
+  color: #55627d;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: #2a3d8f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+  font-size: 0.95rem;
+}
+
+.footer-link:hover {
+  color: #002fff;
+  transform: scale(1.05);
+}
+
+
 
 /* responsive */
 @media (max-width:768px){
