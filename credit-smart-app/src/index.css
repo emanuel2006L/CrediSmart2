@@ -3,7 +3,7 @@
 body { font-family: "Inter", "Segoe UI", sans-serif; background-color:#f5f7fa; color:#2c2c2c; line-height:1.6; }
 .container { max-width:1200px; margin:0 auto; padding:0 20px; }
 
-/* NAV */
+/*nav  */
 .navbar { background: linear-gradient(145deg,#ffffff 0%,#d9e4ff 100%); backdrop-filter: blur(6px); padding:0.7rem 0; position: sticky; top:0; border-radius:0 0 15px 15px; z-index:1000; width:100%; box-shadow:0 4px 10px rgba(0,0,0,.08); }
 .navbar .container{ display:flex; align-items:center; justify-content:space-between; }
 .logo { color:#2a3d8f; font-size:1.6rem; font-weight:700; letter-spacing:1px; }
@@ -63,11 +63,11 @@ body { font-family: "Inter", "Segoe UI", sans-serif; background-color:#f5f7fa; c
 
 } 
 
-/* buttons */
+/* botones */
 .btn-primary{ background:#2a3d8f; color:#fff; cursor:pointer; border:none; padding:.8rem; border-radius:8px; font-weight:600; width:100%; transition:all .25s; }
 .btn-primary:hover{ background:#1e2f6c; }
 
-/* simulador and solicitud cards */
+/* simulador y solicitud de las cards */
 .credits-card-simulador, .solicitud-card { background:#fff; padding:2rem 3rem; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,.12); margin:1.5rem auto; max-width:760px; }
 .filter-container{ display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; padding:1.5rem 1rem; margin:1.5rem 0; background:#fff; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.1); }
 .filter-container input, .filter-container select { padding:.7rem 1rem; border-radius:10px; border:1px solid #cfd5e6; background:#f9fbff; }

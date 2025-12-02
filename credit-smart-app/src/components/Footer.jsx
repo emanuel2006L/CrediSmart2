@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 export default function Footer() {
   return (
     <footer className="footer">
@@ -15,7 +13,7 @@ export default function Footer() {
 
       <a
         className="footer-link"
-        href="https://instagram.com/tu_instagram"
+        href="https://www.instagram.com/lenis_077?igsh=MWRxcmh5dmZla3RlNA=="
         target="_blank"
         rel="noopener noreferrer"
       >

@@ -1,10 +1,10 @@
-// src/pages/Simulator.jsx
+
 import React, { useMemo, useState } from "react";
 import creditsData from "../data/creditsData";
 import CreditCard from "../components/CreditCard";
 
 function parseRange(value) {
-  // convierte las opciones de filtro a min/max
+
   if (!value || value === "Todos") return null;
   if (value === "500k-10M") return { min: 500000, max: 10000000 };
   if (value === "10M-50M") return { min: 10000000, max: 50000000 };

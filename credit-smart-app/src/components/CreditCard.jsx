@@ -1,4 +1,4 @@
-// src/components/CreditCard.jsx
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function CreditCard({ credit }) {
   return (
     <div className="credits-card">
 
-      {/* Imagen del crédito */}
+      {}
       {credit.image && (
         <img
           src={`/imagenes/${credit.image}`}
