@@ -1,35 +1,33 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 
 export default function CreditCard({ credit }) {
   const navigate = useNavigate();
 
   const goToApply = () => {
-    navigate("/apply",{state: {creditId: credit.id}}); 
+    navigate("/apply", { state: { creditId: credit.id } });
   };
-  
-  
-  
+
   return (
     <div className="credits-card">
-
       {}
       {credit.image && (
         <img
-          src={`/imagenes/${credit.image}`}
+          src={credit.image}
           alt={credit.name}
           className="credit-image"
           style={{
             width: "100%",
             borderRadius: "12px",
-            marginBottom: "12px"
+            marginBottom: "12px",
           }}
         />
       )}
 
-      <div style={{ display: "flex", gap: 12, alignItems: "center" }} className="card-header">
+      <div
+        style={{ display: "flex", gap: 12, alignItems: "center" }}
+        className="card-header"
+      >
         <span style={{ fontSize: 28 }}>{credit.icon}</span>
         <h4>{credit.name}</h4>
       </div>
@@ -39,19 +37,20 @@ export default function CreditCard({ credit }) {
       <div style={{ marginTop: 12 }}>
         <div className="details-item">
           <span className="label">Tasa de interes: </span>
-          <span className="value-highlight">{credit.interestEA}% E.A.</span>
+          <span className="value-highlight">{credit.interestRate}% E.A.</span>
         </div>
 
         <div className="details-item">
           <span className="label">Monto: </span>
           <span className="value">
-            {credit.minAmount.toLocaleString()} - {credit.maxAmount.toLocaleString()}
+            {credit.minAmount.toLocaleString()} -{" "}
+            {credit.maxAmount.toLocaleString()}
           </span>
         </div>
 
         <div className="details-item">
           <span className="label">Plazo: </span>
-          <span className="value">Hasta {credit.maxTermMonths} meses</span>
+          <span className="value">Hasta {credit.maxTerm} meses</span>
         </div>
       </div>
 
@@ -61,6 +60,5 @@ export default function CreditCard({ credit }) {
         </button>
       </div>
     </div>
-    
   );
 }
