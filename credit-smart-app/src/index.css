@@ -71,7 +71,17 @@ body { font-family: "Inter", "Segoe UI", sans-serif; background-color:#f5f7fa; c
 .credits-card-simulador, .solicitud-card { background:#fff; padding:2rem 3rem; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,.12); margin:1.5rem auto; max-width:760px; }
 .filter-container{ display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; padding:1.5rem 1rem; margin:1.5rem 0; background:#fff; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.1); }
 .filter-container input, .filter-container select { padding:.7rem 1rem; border-radius:10px; border:1px solid #cfd5e6; background:#f9fbff; }
-
+.solicitud-card h3{
+  padding: 1.5;
+  text-align: center;
+  font-size: 2.5rem;
+}
+.solicitud-card p{
+  font-size: 2rem;
+  color: #002fff;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 /* form */
 .form-group{ display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin:0.7rem 0; }
 .form-group label{ display:inline-block; width:180px; min-width:120px; font-weight:600; color:#1e2a44; }
