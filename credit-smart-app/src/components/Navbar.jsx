@@ -1,6 +1,5 @@
-
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -11,6 +10,7 @@ export default function Navbar() {
           <li><NavLink to="/">Inicio</NavLink></li>
           <li><NavLink to="/simulator">Simular credito</NavLink></li>
           <li><NavLink to="/apply">Solicitar Credito</NavLink></li>
+          <li><Link to="/solicitudes">Mis solicitudes</Link></li>
         </ul>
       </div>
     </nav>

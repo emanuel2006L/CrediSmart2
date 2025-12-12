@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Simulator from "./pages/Simulator";
 import Apply from "./pages/Apply";
+import Solicitudes from "./pages/Solicitudes";
+
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/simulator" element={<Simulator />} />
           <Route path="/apply" element={<Apply />} />
+          <Route path="/solicitudes" element={<Solicitudes />} />
+
         </Routes>
         <Footer /> {}
       </main>

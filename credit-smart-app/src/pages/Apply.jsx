@@ -43,7 +43,7 @@ useEffect(()=>{
   const e={};
   if(form.email&&!/^\S+@\S+\.\S+$/.test(form.email))e.email="Correo inválido";
   if(form.phone&&!/^\d{7,15}$/.test(form.phone))e.phone="Número inválido";
-  if(form.docNumber&&!/^\d{5,12}$/.test(form.docNumber))e.docNumber="Documento inválido";
+  if(form.docNumber&&!/^\d{5,12}$/ .test(form.docNumber))e.docNumber="Documento inválido";
   if(form.amount&&Number(form.amount)<=0)e.amount="Monto debe ser mayor a 0";
   if(form.term&&(Number(form.term)<=0||Number(form.term)>360))e.term="Plazo inválido";
   setErrors(e);
@@ -126,16 +126,17 @@ return(
     <div className="solicitud-card">
 
       <h3>Solicitud de crédito</h3>
-      <p>Completa los datos para enviar tu solicitud</p>
+      <p>Completa los datos</p>
 
       <form className="solicitud-form" onSubmit={handleSubmit}>
+
         <h4>Datos Personales</h4>
 
         <div className="form-group">
           <label htmlFor="nombre">Nombre completo</label>
           <input id="nombre" value={form.name} onChange={e=>update("name",e.target.value)}/>
         </div>
-        {errors.name&&<p style={{color:"crimson"}}>{errors.name}</p>}
+        {errors.name && <p style={{ color: "crimson" }}>{errors.name}</p>}
 
         <div className="form-group">
           <label htmlFor="docType">Tipo de documento</label>
@@ -145,22 +146,66 @@ return(
             <option value="CE">Cédula extranjera</option>
           </select>
         </div>
-        {errors.docType&&<p style={{color:"crimson"}}>{errors.docType}</p>}
+        {errors.docType && <p style={{ color: "crimson" }}>{errors.docType}</p>}
 
         <div className="form-group">
           <label htmlFor="docNumber">Número de documento</label>
-          <input id="docNumber" value={form.docNumber} onChange={e=>update("docNumber",e.target.value)} placeholder="Ej: 1025487963"/>
+          <input id="docNumber" value={form.docNumber} onChange={e=>update("docNumber",e.target.value)} />
         </div>
-        {errors.docNumber&&<p style={{color:"crimson"}}>{errors.docNumber}</p>}
+        {errors.docNumber && <p style={{ color: "crimson" }}>{errors.docNumber}</p>}
 
         <div className="form-group">
-          <label htmlFor="telefono">Número telefónico</label>
-          <input id="telefono" value={form.phone} onChange={e=>update("phone",e.target.value)} placeholder="Ej: 3207875462"/>
+          <label htmlFor="telefono">Teléfono</label>
+          <input id="telefono" value={form.phone} onChange={e=>update("phone",e.target.value)} />
         </div>
-        {errors.phone&&<p style={{color:"crimson"}}>{errors.phone}</p>}
+        {errors.phone && <p style={{ color: "crimson" }}>{errors.phone}</p>}
 
         <div className="form-group">
           <label htmlFor="correo">Correo electrónico</label>
-          <input id="correo" value={form.email} onChange={e=>update("email",e.target.value)} placeholder="ejemplo@correo.com"/>
+          <input id="correo" value={form.email} onChange={e=>update("email",e.target.value)} />
         </div>
-        {errors.email&&<p st
+        {errors.email && <p style={{ color: "crimson" }}>{errors.email}</p>}
+
+        <h4>Datos del Crédito</h4>
+
+        <div className="form-group">
+          <label>Crédito seleccionado</label>
+          <select value={form.creditId} onChange={e=>update("creditId",e.target.value)}>
+            <option value="">Seleccione un crédito</option>
+            {creditsData.map(c=>(
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
+          </select>
+        </div>
+        {errors.creditId && <p style={{ color: "crimson" }}>{errors.creditId}</p>}
+
+        <div className="form-group">
+          <label>Monto solicitado</label>
+          <input type="number" value={form.amount} onChange={e=>update("amount",e.target.value)} />
+        </div>
+        {errors.amount && <p style={{ color: "crimson" }}>{errors.amount}</p>}
+
+        <div className="form-group">
+          <label>Plazo (meses)</label>
+          <input type="number" value={form.term} onChange={e=>update("term",e.target.value)} />
+        </div>
+        {errors.term && <p style={{ color: "crimson" }}>{errors.term}</p>}
+
+        {selectedCredit && (
+          <div className="resultado-cuota">
+            <p>Cuota mensual estimada: <strong>${formatCurrency(Math.round(monthlyInstallment))}</strong></p>
+          </div>
+        )}
+
+        {successMsg && (
+          <p style={{ color: "green", fontWeight: "bold" }}>{successMsg}</p>
+        )}
+
+        <button type="submit" className="btn-primary">Enviar solicitud</button>
+      </form>
+
+    </div>
+  </section>
+</div>
+);
+}

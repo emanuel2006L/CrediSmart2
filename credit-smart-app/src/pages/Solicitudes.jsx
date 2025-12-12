@@ -53,7 +53,7 @@ export default function Solicitudes() {
         <div className="solicitud-card">
 
           <h3>Buscar solicitudes</h3>
-          <p>Ingresa el correo usado para enviar solicitudes</p>
+          <p>Ingresa el correo usado para enviar las solicitudes</p>
 
           <div className="form-group" style={{ marginTop: 15 }}>
             <label>Correo electrónico</label>
