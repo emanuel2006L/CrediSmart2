@@ -140,3 +140,56 @@ body { font-family: "Inter", "Segoe UI", sans-serif; background-color:#f5f7fa; c
   .form-group input, .form-group select { width:100%; height:42px; }
   .credits-card-simulador, .solicitud-card{ padding:1.2rem; }
 }
+ /* ================= INPUTS DENTRO DE SOLICITUD ================= */
+
+.solicitud-card input[type="number"] {
+  width: 100%;
+  height: 44px;
+  margin: 0.3rem 0 1rem 0;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #cfd5e6;
+  background: #f9fbff;
+  font-weight: 500;
+}
+
+/* Labels */
+.solicitud-card label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e2a44;
+  margin-top: 0.8rem;
+}
+
+/* ================= BOTONES ================= */
+
+.solicitud-card button {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+/* Actualizar */
+.solicitud-card button.btn-primary {
+  background: #2a3d8f;
+  color: #fff;
+}
+
+.solicitud-card button.btn-primary:hover {
+  background: #1e2f6c;
+}
+
+/* Eliminar */
+.solicitud-card button:not(.btn-primary) {
+  background: #dc2626;
+  color: #fff;
+}
+
+.solicitud-card button:not(.btn-primary):hover {
+  background: #b91c1c;
+}

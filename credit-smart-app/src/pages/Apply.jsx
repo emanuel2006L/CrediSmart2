@@ -1,13 +1,19 @@
+
 import React,{useEffect,useMemo,useState}from"react";
 import creditsData from"../data/creditsData";
 import { useLocation } from "react-router-dom";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-function formatCurrency(n){if(!n)return"0";return Number(n).toLocaleString("es-CO");}
+// Función simple para mostrar valores como dinero colombiano
+function formatCurrency(n){
+  if(!n)return"0";
+  return Number(n).toLocaleString("es-CO");
+}
 
 export default function Apply(){
 
+// Estado que guarda todos los datos del formulario
 const[form,setForm]=useState({
   name:"",
   docType:"",
@@ -19,8 +25,10 @@ const[form,setForm]=useState({
   term:""
 });
 
+// Permite recibir datos enviados desde otra página
 const location = useLocation();
 
+// Si viene un crédito seleccionado desde otra vista, se asigna aquí
 useEffect(() => {
   if (location.state?.creditId) {
     setForm(prev => ({
@@ -30,15 +38,18 @@ useEffect(() => {
   }
 }, [location.state]);
 
+// Estados auxiliares para validaciones y mensajes
 const[errors,setErrors]=useState({});
 const[requests,setRequests]=useState([]);
 const[successMsg,setSuccessMsg]=useState("");
 
+// Obtiene el crédito seleccionado a partir del id
 const selectedCredit = useMemo(
   ()=>creditsData.find(c=>String(c.id)===String(form.creditId)),
   [form.creditId]
 );
 
+// Validaciones básicas mientras el usuario llena el formulario
 useEffect(()=>{
   const e={};
   if(form.email&&!/^\S+@\S+\.\S+$/.test(form.email))e.email="Correo inválido";
@@ -49,6 +60,7 @@ useEffect(()=>{
   setErrors(e);
 },[form]);
 
+// Cálculo de la cuota mensual según monto, plazo e interés
 const monthlyInstallment = useMemo(()=>{
   if(!selectedCredit||!form.amount||!form.term)return 0;
   const P=Number(form.amount);
@@ -59,11 +71,13 @@ const monthlyInstallment = useMemo(()=>{
   return cuota;
 },[selectedCredit,form.amount,form.term]);
 
+// Actualiza cualquier campo del formulario
 function update(f,v){
   setForm(p=>({...p,[f]:v}));
   setSuccessMsg("");
 }
 
+// Maneja el envío del formulario y el guardado en Firebase
 async function handleSubmit(e){
   e.preventDefault();
 
@@ -84,6 +98,7 @@ async function handleSubmit(e){
   }
 
   try {
+    // Guarda la solicitud en la base de datos
     await addDoc(collection(db,"solicitudes"),{
       name: form.name,
       docType: form.docType,
@@ -99,6 +114,7 @@ async function handleSubmit(e){
 
     setRequests(p=>[...p,{...form,id:Date.now(),monthly:Math.round(monthlyInstallment)}]);
 
+    // Limpia el formulario después de enviar
     setForm({
       name:"",
       docType:"",
